@@ -1,0 +1,33 @@
+# --- SÉCURITÉ  ---
+.env
+.env.local
+.env.*
+*.pem
+*.key
+secrets.json
+auth.json
+
+# --- DÉPENDANCES ---
+node_modules/
+bower_components/
+venv/
+.venv/
+env/
+bin/
+obj/
+
+# --- FICHIERS SYSTÈME & IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.log
+
+# --- BUILDS & SORTIES ---
+dist/
+build/
+out/
+*.exe
+*.dll
+*.so
