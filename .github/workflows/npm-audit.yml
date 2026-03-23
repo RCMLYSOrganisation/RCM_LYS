@@ -1,0 +1,28 @@
+name: Dependency Security Scan (SCA)
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+jobs:
+  dependency-scan:
+    name: NPM Audit
+    runs-on: ubuntu-latest
+    continue-on-error: true  # Mode informatif pour commencer
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./renomatch  # Dossier du projet React
+
+      - name: Run NPM Audit
+        run: npm audit --audit-level=high
+        working-directory: ./renomatch
