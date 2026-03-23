@@ -1,33 +1,49 @@
-# --- SÉCURITÉ  ---
+# --- DÉPENDANCES  ---
+# Ne jamais commit ce dossier, il est généré par 'npm install'
+node_modules/
+/jspm_packages/
+
+# --- SÉCURITÉ & ENVIRONNEMENT  ---
+# Fichiers contenant les clés API, tokens et secrets
 .env
 .env.local
-.env.*
+.env.development.local
+.env.test.local
+.env.production.local
 *.pem
 *.key
-secrets.json
-auth.json
 
-# --- DÉPENDANCES ---
-node_modules/
-bower_components/
-venv/
-.venv/
-env/
-bin/
-obj/
-
-# --- FICHIERS SYSTÈME & IDE ---
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-*.swp
-*.log
-
-# --- BUILDS & SORTIES ---
+# --- BUILDS & PRODUCTION ---
+# Dossiers générés lors du 'npm run build'
 dist/
 build/
-out/
-*.exe
-*.dll
-*.so
+.pnp
+.pnp.js
+
+# --- LOGS ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# --- TESTS ---
+/coverage
+/.nyc_output
+
+# --- IDE & SYSTÈME ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- CACHE ---
+.eslintcache
+.stylelintcache
+.node_repl_history
+.cache/
