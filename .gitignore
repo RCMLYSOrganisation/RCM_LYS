@@ -47,3 +47,13 @@ Thumbs.db
 .stylelintcache
 .node_repl_history
 .cache/
+
+# --- DATA & BASES DE DONNÉES ---
+# Ne jamais versionner de données réelles ou de fichiers DB
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+*.sql.gz
+dump.sql
+/data/
