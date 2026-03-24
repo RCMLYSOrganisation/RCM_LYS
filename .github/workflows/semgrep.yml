@@ -10,6 +10,8 @@ jobs:
   semgrep-scan:
     name: Semgrep Security Scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     continue-on-error: true  # Mode informatif : ne bloque pas la PR
     steps:
       - uses: actions/checkout@v4
