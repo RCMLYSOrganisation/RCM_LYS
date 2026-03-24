@@ -5,7 +5,10 @@ on:
     branches: [main, develop] # On protège les deux branches vitales
   push:
     branches: [main, develop]
-    
+
+permissions:
+  contents: read    
+
 jobs:
   scan:
     name: Gitleaks Scan
