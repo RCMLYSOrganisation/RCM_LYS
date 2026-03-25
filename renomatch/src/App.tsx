@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import WorksitePhotoOffline from "./components/WorksitePhotoOffline";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -114,6 +115,10 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
+      <main className="app">
+        <h1>POC - Mode hors ligne chantier</h1>
+        <WorksitePhotoOffline orderId="ORDER-POC-001" />
+      </main>
     </>
   )
 }
