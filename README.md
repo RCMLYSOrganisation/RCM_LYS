@@ -2,6 +2,9 @@
 
 ### 🛡️ Architecture Réseau et Flux de Données
 
+### 🛡️ Architecture Réseau et Flux de Données (Version Micro-services)
+
+```mermaid
 graph TD
     User((🌐 Internet)) -->|WAF / HTTPS| GW[🚀 API Gateway]
     
@@ -11,10 +14,10 @@ graph TD
     end
 
     subgraph "Private Subnet (App Layer)"
-        GW -->|Route /auth| Auth[🔐 Auth]
-        GW -->|Route /users| Users[👤 Users]
-        GW -->|Route /pay| Payments[💳 Payments]
-        GW -->|Route /work| Worksites[🚧 Worksites]
+        GW -->|Route /auth| Auth[🔐 Auth Service]
+        GW -->|Route /users| Users[👤 Users Service]
+        GW -->|Route /pay| Payments[💳 Payments Service]
+        GW -->|Route /work| Worksites[🚧 Worksites Service]
         
         Payments -->|API| Stripe((🌍 Stripe API))
         Worksites -->|Upload| S3((☁️ AWS S3 Storage))
@@ -24,7 +27,10 @@ graph TD
         Auth --> DB_A[(🗄️ Auth DB)]
         Payments --> DB_P[(🗄️ Payments DB)]
         Worksites --> DB_W[(🗄️ Worksites DB)]
-        Bastion -.->|Admin Only| DB_A
+        
+        Bastion -.->|Accès Admin| DB_A
+        Bastion -.->|Accès Admin| DB_P
+        Bastion -.->|Accès Admin| DB_W
     end
 
     NAT[🛠️ NAT Gateway] -.->|Sortie Sécurisée| Stripe
