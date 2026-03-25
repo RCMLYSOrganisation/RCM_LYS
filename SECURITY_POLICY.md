@@ -40,7 +40,7 @@ DB_HOST=localhost
 DB_USER=renomatch_user
 DB_PASSWORD=MonMotDePasse123!
 DB_NAME=renomatch_db
-API_KEY=sk-abc123def456
+API_KEY=votre_cle_api_ici
 JWT_SECRET=super_secret_jwt_key
 PORT=3000
 ```
@@ -52,7 +52,7 @@ Le code doit toujours référencer les secrets via `process.env`, jamais en dur 
 | INTERDIT ❌ | CORRECT ✅ |
 |---|---|
 | `const password = 'MonMotDePasse123!';` | `const password = process.env.DB_PASSWORD;` |
-| `const apiKey = 'sk-abc123def456';` | `const apiKey = process.env.API_KEY;` |
+| `const apiKey = 'VOTRE_CLE_API';` | `const apiKey = process.env.API_KEY;` |
 | `const jwtSecret = 'super_secret';` | `const jwtSecret = process.env.JWT_SECRET;` |
 
 ### 1.4 Secrets dans la CI/CD (GitHub Actions)
