@@ -5,7 +5,7 @@
 ### 🛡️ Architecture Réseau et Flux de Données (Version Micro-services)
 
 ```mermaid
-graph TD
+graph TD 
     User((🌐 Internet)) -->|WAF / HTTPS| GW[🚀 API Gateway]
     
     subgraph "Public Subnet (DMZ)"
@@ -31,10 +31,10 @@ graph TD
         Bastion -.->|Accès Admin| DB_A
         Bastion -.->|Accès Admin| DB_P
         Bastion -.->|Accès Admin| DB_W
-    end
 
     NAT[🛠️ NAT Gateway] -.->|Sortie Sécurisée| Stripe
-
+    end
+```
 Le tableau suivant définit les flux de communication autorisés au sein de l'infrastructure. Par principe de sécurité, tout flux non explicitement listé ici est **interdit (Default Deny)**.
 
 | Source | Destination | Port / Protocole | Description & Justification Cyber |
@@ -49,3 +49,7 @@ Le tableau suivant définit les flux de communication autorisés au sein de l'in
 | **🚧 Worksites Service** | **☁️ AWS S3** | `HTTPS (443)` | Stockage déporté des photos et documents lourds. |
 | **👤 Admin (Distanciel)** | **🛡️ Bastion Host** | `SSH (22)` | Seul accès d'administration autorisé (via VPN/IP fixe). |
 | **🛡️ Bastion Host** | **🏗️ Zone Privée** | `Interne` | Administration et maintenance des serveurs et BDD. |
+   
+    NAT[🛠️ NAT Gateway] -.->|Sortie Sécurisée| Stripe
+
+
