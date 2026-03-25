@@ -2,20 +2,19 @@
 
 ### 🛡️ Architecture Réseau et Flux de Données
 
-```mermaid
 graph TD
-    User((🌐 Internet)) -->|WAF / HTTPS|[API gateway]
+    User((🌐 Internet)) -->|WAF / HTTPS| GW[🚀 API Gateway]
     
     subgraph "Public Subnet (DMZ)"
-        LB
+        GW
         Bastion[🛡️ Bastion Host]
     end
 
     subgraph "Private Subnet (App Layer)"
-        LB --> Auth[🔐 Auth]
-        LB --> Users[👤 Users]
-        LB --> Payments[💳 Payments]
-        LB --> Worksites[🚧 Worksites]
+        GW -->|Route /auth| Auth[🔐 Auth]
+        GW -->|Route /users| Users[👤 Users]
+        GW -->|Route /pay| Payments[💳 Payments]
+        GW -->|Route /work| Worksites[🚧 Worksites]
         
         Payments -->|API| Stripe((🌍 Stripe API))
         Worksites -->|Upload| S3((☁️ AWS S3 Storage))
@@ -29,7 +28,6 @@ graph TD
     end
 
     NAT[🛠️ NAT Gateway] -.->|Sortie Sécurisée| Stripe
-### 📊 Matrice de Flux Réseau
 
 Le tableau suivant définit les flux de communication autorisés au sein de l'infrastructure. Par principe de sécurité, tout flux non explicitement listé ici est **interdit (Default Deny)**.
 
