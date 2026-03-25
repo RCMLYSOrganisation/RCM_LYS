@@ -4,7 +4,7 @@
 
 ```mermaid
 graph TD
-    User((🌐 Internet)) -->|WAF / HTTPS| [API gateway]
+    User((🌐 Internet)) -->|WAF / HTTPS|[API gateway]
     
     subgraph "Public Subnet (DMZ)"
         LB
