@@ -1,2 +1,6 @@
+# Ignore les faux positifs dans la politique de sécurité (tes anciennes lignes)
 6a5ea452f5584f4c2f52af4e1cab1de1f0122c75:SECURITY_POLICY.md:generic-api-key:43
 6a5ea452f5584f4c2f52af4e1cab1de1f0122c75:SECURITY_POLICY.md:generic-api-key:55
+
+# Ignore spécifiquement la ligne JWT_SECRET dans .env.example
+851b99d3705d82bfe8991ff56b5bc0205840a61e:.env.example:generic-api-key:15
