@@ -13,9 +13,6 @@ node_modules/
 *.pem
 *.key
 
-# Autoriser explicitement le fichier d'exemple (le modèle)
-!.env.example
-
 # --- BUILDS & PRODUCTION ---
 # Dossiers générés lors du 'npm run build'
 dist/
