@@ -1,0 +1,30 @@
+name: Hadolint Dockerfile Lint
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - '**/Dockerfile'
+  push:
+    branches: [main, develop]
+    paths:
+      - '**/Dockerfile'
+
+permissions:
+  contents: read
+
+jobs:
+  hadolint:
+    name: Dockerfile Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Hadolint
+        run: |
+          wget -q https://github.com/hadolint/hadolint/releases/download/v2.14.0/hadolint-Linux-x86_64
+          chmod +x hadolint-Linux-x86_64
+          mv hadolint-Linux-x86_64 hadolint
+
+      - name: Lint all Dockerfiles
+        run: find . -name "Dockerfile" -exec ./hadolint {} \;
